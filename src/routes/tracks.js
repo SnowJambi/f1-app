@@ -5,41 +5,43 @@ export default function Tracks() {
   let storedInput = JSON.parse(window.sessionStorage.getItem('trackInput'))
   const [input, setInput] = useState( storedInput !== null ? storedInput : '2021')
   const [year, setYear] = useState( storedYear !== null ? storedYear : '2021' )
+  const [tracks, setTracks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const getTracks = async (year) => {
+  const getTracks = (year) => {
     let url = `http://ergast.com/api/f1/${year}/circuits.json`
     console.log(url)
-    try {
-      let res = await fetch(url)
-      let data = await res.json()
-      let circuits = data.MRData.CircuitTable
-      return circuits
-    } catch (error) {
-      console.log(error)
-    }
+    return fetch(url)
+    .then(res => res.json())
   }
 
-  const [tracks, setTracks] = useState([])
+  useEffect(() => {
+    setIsLoading(false)
+  }, [tracks])
 
-  useEffect(async () => {
+  useEffect(() => {
     setIsLoading(true)
     window.sessionStorage.setItem('trackYear', JSON.stringify(year))
     let storedTracks = JSON.parse(window.localStorage.getItem(`tracks-${year}`))
     if (storedTracks !== null) {
       setTracks(storedTracks)
-      setIsLoading(false)
     } else {
-      let circuits = await getTracks(year)
-      setTracks(circuits)
-      window.localStorage.setItem(`tracks-${year}`, JSON.stringify(circuits))
-      setIsLoading(false)
+      getTracks(year)
+      .then((res) => {
+        let circuits = res.MRData.CircuitTable
+        setTracks(circuits)
+        window.localStorage.setItem(`tracks-${year}`, JSON.stringify(circuits))
+      })
     }
   }, [year])
 
   useEffect(() => {
     window.sessionStorage.setItem('trackInput', JSON.stringify(input))
   }, [input])
+
+  useEffect(() => {
+    window.sessionStorage.setItem('trackYear', JSON.stringify(year))
+  }, [year])
 
   const onClick = async () => {
     setYear(input)
