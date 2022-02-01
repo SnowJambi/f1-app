@@ -9,7 +9,7 @@ export default function Tracks() {
   const [isLoading, setIsLoading] = useState(true)
 
   const getTracks = (year) => {
-    let url = `http://ergast.com/api/f1/${year}/circuits.json`
+    let url = `https://ergast.com/api/f1/${year}/circuits.json`
     console.log(url)
     return fetch(url)
     .then(res => res.json())
@@ -39,11 +39,7 @@ export default function Tracks() {
     window.sessionStorage.setItem('trackInput', JSON.stringify(input))
   }, [input])
 
-  useEffect(() => {
-    window.sessionStorage.setItem('trackYear', JSON.stringify(year))
-  }, [year])
-
-  const onClick = async () => {
+  const onClick = () => {
     setYear(input)
   }
 
