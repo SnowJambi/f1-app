@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Work+Sans:wght@600;800&display=swap');
+
+body {
+  font-family: Work sans;
+  padding: 40px;
+  background-image: url('../../public/bg.png');
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+}
+
+.track {
+  border-top: 5px solid #e10600;
+  border-right: 5px solid #e10600;
+  border-radius: 25px;
+  display: inline-block;
+  padding: 0 0 20px 20px;
+  box-shadow: 0 0 3px black;
+  background-color: #fff;
+  flex: 0 390px;
+  margin: 20px;
+  background-image: url(../../public/bg2.png);
+
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 25px;
+  }
+}
+
+.track-details {
+  border-left: 5px solid #e10600;
+  padding-left: 10px;
+}
+
+.tracks {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 1400px;
+  justify-content: center;
+}
+
+.round {
+  font-weight: 800;
+}
+
+.track-placeholder {
+  border-top: 5px solid #e10600;
+  border-right: 5px solid #e10600;
+  border-radius: 25px;
+  display: inline-block;
+  padding: 0 0 20px 20px;
+  box-shadow: 0 0 3px black;
+  background-color: #fff;
+  flex: 0 390px;
+  margin: 20px;
+  background-image: url(../../public/bg2.png);
+
+  .blink {
+    animation-duration: 0.75s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 25px;
+  }
+
+  .container {
+    width: 365px;
+    height: 183px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  .round {
+    height: 14px;
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: #eee;
+  }
+
+  .track-details {
+    height: 72px;
+    padding-top: 5px;
+    p {
+      margin: 10px 0;
+      height: 14px;
+    }
+
+    p:nth-child(1) {
+      margin-top: 0;
+      width: 65%;
+    }
+
+    p:nth-child(2) {
+      width: 50%;
+    }
+    
+    p:nth-child(3) {
+      width: 25%;
+    }
+  }
+
+  h2 {
+    height: 37px;
+    span {
+      height: 23px;
+      width: 90%;
+      display: block;
+    }
+  }
+
+  p {
+    height: 24px;
+  }
+}
+
+h2 {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+}
+
+select {
+  width: 100px;
+  height: 50px;
+  padding: 10px 0 10px 20px;
+  border-radius: 5px;
+}
+
+button {
+  width: auto;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 20px;
+  color: white;
+  background-color: #222;
+  border: 1px solid black;
+
+  &:hover {
+    background-color: #444;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 20px black;
+    color: #eee;
+  }
+}
+
+@keyframes blink {
+  from {background-color: #fff;}
+  to {background-color: #eee;}
+}

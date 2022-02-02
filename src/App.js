@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import './App.css';
+import './styles/reset.scss';
+import './styles/App.scss';
 
 export default function App() {
   return (

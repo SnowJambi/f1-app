@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Track, TrackPlaceholder } from '../components/Track';
 
 export default function Tracks() {
   let storedYear = JSON.parse(window.sessionStorage.getItem('trackYear'))
+  
   let storedInput = JSON.parse(window.sessionStorage.getItem('trackInput'))
   const [input, setInput] = useState( storedInput !== null ? storedInput : '2021')
   const [year, setYear] = useState( storedYear !== null ? storedYear : '2021' )
@@ -9,7 +11,7 @@ export default function Tracks() {
   const [isLoading, setIsLoading] = useState(true)
 
   const getTracks = (year) => {
-    let url = `https://ergast.com/api/f1/${year}/circuits.json`
+    let url = `https://ergast.com/api/f1/${year}.json`
     console.log(url)
     return fetch(url)
     .then(res => res.json())
@@ -28,9 +30,9 @@ export default function Tracks() {
     } else {
       getTracks(year)
       .then((res) => {
-        let circuits = res.MRData.CircuitTable
-        setTracks(circuits)
-        window.localStorage.setItem(`tracks-${year}`, JSON.stringify(circuits))
+        let races = res.MRData.RaceTable
+        setTracks(races)
+        window.localStorage.setItem(`tracks-${year}`, JSON.stringify(races))
       })
     }
   }, [year])
@@ -59,34 +61,35 @@ export default function Tracks() {
   if (isLoading) {
     return (
       <>
+        <h1>{year} Formula 1 Race Schedule</h1>
         <select name="years" value={year} readOnly={true}>
-          {getYears(1950,2021).map((year) => {
+          {getYears(1950,2022).map((year) => {
             return <option>{year}</option>
           })}
         </select>
-        <button>View</button>
-        <div>year: {year}</div>
-        <div>tracks: </div>
-        <div>Loading tracks...</div>
+        <button>View schedule</button>
+        <div className='tracks'>
+          {Array.from(Array(25)).map(() => <TrackPlaceholder />)}
+        </div>
       </>
     )
   }
 
   return (
     <>
+      <h1>{year} Formula 1 Race Schedule</h1>
       <select name="years" onChange={onChange} value={input}>
-        {getYears(1950,2021).map((year) => {
+        {getYears(1950,2022).map((year) => {
           return <option value={year}>{year}</option>
         })}
       </select>
-      <button onClick={onClick}>View</button>
-      <div>year: {year}</div>
-      <div>tracks: </div>
-      <ul>
-        {tracks.Circuits.map((circuit) => {
-          return <li>{circuit.circuitName}</li>
+      <button onClick={onClick}>View schedule</button>
+      <div className='tracks'>
+        {tracks.Races.map((race) => {
+          return <Track race={race} />
         })}
-      </ul>
+      </div>
     </>
   )
 }
+
