@@ -12,8 +12,8 @@ export default function App() {
           paddingBottom: "1rem"
         }}
       >
-        <Link to="/drivers">Drivers</Link> |{" "}
-        <Link to="/tracks">Tracks</Link>
+        {/* <Link to="/drivers">Drivers</Link> |{" "} */}
+        <Link to="/schedule">Schedule</Link>
       </nav>
     </div>
   );
