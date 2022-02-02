@@ -5,8 +5,8 @@ export default function Tracks() {
   let storedYear = JSON.parse(window.sessionStorage.getItem('trackYear'))
   
   let storedInput = JSON.parse(window.sessionStorage.getItem('trackInput'))
-  const [input, setInput] = useState( storedInput !== null ? storedInput : '2021')
-  const [year, setYear] = useState( storedYear !== null ? storedYear : '2021' )
+  const [input, setInput] = useState( storedInput !== null ? storedInput : '2022')
+  const [year, setYear] = useState( storedYear !== null ? storedYear : '2022' )
   const [tracks, setTracks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
