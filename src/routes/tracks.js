@@ -64,12 +64,12 @@ export default function Tracks() {
         <h1>{year} Formula 1 Race Schedule</h1>
         <select name="years" value={year} readOnly={true}>
           {getYears(1950,2022).map((year) => {
-            return <option>{year}</option>
+            return <option key={year}>{year}</option>
           })}
         </select>
         <button>View schedule</button>
         <div className='tracks'>
-          {Array.from(Array(25)).map(() => <TrackPlaceholder />)}
+          {Array.from(Array(25)).map((_,index) => <TrackPlaceholder key={index} />)}
         </div>
       </>
     )
@@ -80,13 +80,13 @@ export default function Tracks() {
       <h1>{year} Formula 1 Race Schedule</h1>
       <select name="years" onChange={onChange} value={input}>
         {getYears(1950,2022).map((year) => {
-          return <option value={year}>{year}</option>
+          return <option value={year} key={year}>{year}</option>
         })}
       </select>
       <button onClick={onClick}>View schedule</button>
       <div className='tracks'>
         {tracks.Races.map((race) => {
-          return <Track race={race} />
+          return <Track key={race.round} race={race} />
         })}
       </div>
     </>
