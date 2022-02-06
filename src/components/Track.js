@@ -4,8 +4,9 @@ export function Track({race}) {
 
   let date = new Date(race.date + 'T' + race.time)
   let time = date.toLocaleTimeString().split(':')
+  let period = time[2].split(' ').pop()
   time.pop()
-  time = time.join(':')
+  time = time.join(':') + ' ' + period
 
 
   return (
