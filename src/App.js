@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import './styles/reset.scss';
 import './styles/App.scss';
@@ -76,12 +76,11 @@ export default function App() {
 
   // Once we have the next race date, show the remaining time
   useEffect (() => {
-    if (nextRaceDate) setTimeRem(nextRaceDate.getTime() - (new Date()).getTime())
-    let remaining = setInterval(() => setTimeRem(nextRaceDate.getTime() - (new Date()).getTime()), 1000)
-    return () => clearInterval(remaining)
-  }, [nextRaceDate])
+    if (nextRaceDate) setTimeRem(nextRaceDate.getTime() - date.getTime())
+  }, [nextRaceDate, date])
 
   return (
+    !isLoading && 
     <div>
       <h1>Hello!</h1>
       <p>{date.toLocaleString()}</p>
