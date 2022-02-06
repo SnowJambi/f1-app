@@ -89,7 +89,7 @@ export default function App() {
         <Link to="schedule">Schedule</Link>
       </nav>
       <div>{ nextRace ? 
-        <div>The next race is the {nextRace.raceName} in {timeRemaining(timeRem)}</div>
+        <div>The next race is the {nextRace.raceName} in </div>
         : 'No more races this season :(' }
       </div>
     </div>
