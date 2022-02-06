@@ -10,7 +10,7 @@ h1, h2, h3 {
   font-weight: 800;
 }
 
-.track {
+.race {
   border-top: 5px solid #e10600;
   border-right: 5px solid #e10600;
   border-radius: 25px;
@@ -29,12 +29,12 @@ h1, h2, h3 {
   }
 }
 
-.track-details {
+.race-details {
   border-left: 5px solid #e10600;
   padding-left: 10px;
 }
 
-.tracks {
+.races {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -46,7 +46,7 @@ h1, h2, h3 {
   font-weight: 800;
 }
 
-.track-placeholder {
+.race-placeholder {
   border-top: 5px solid #e10600;
   border-right: 5px solid #e10600;
   border-radius: 25px;
@@ -81,7 +81,7 @@ h1, h2, h3 {
     background-color: #eee;
   }
 
-  .track-details {
+  .race-details {
     height: 72px;
     padding-top: 5px;
     p {
