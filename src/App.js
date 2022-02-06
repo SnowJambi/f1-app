@@ -63,7 +63,7 @@ export default function App() {
       let nextRace = false
       for (let i = 0; i < races.Races.length; i++) {
         let raceDate = new Date(races.Races[i].date + 'T' + races.Races[i].time)
-        if (raceDate.getTime() > date.getTime()) {
+        if (raceDate.getTime() > (new Date()).getTime()) {
           nextRace = races.Races[i]
           setNextRaceDate(raceDate)
           break;
@@ -89,7 +89,7 @@ export default function App() {
         <Link to="schedule">Schedule</Link>
       </nav>
       <div>{ nextRace ? 
-        <div>The next race is the {nextRace.raceName} in </div>
+        <div>The next race is the {nextRace.raceName} in {timeRemaining(timeRem)}</div>
         : 'No more races this season :(' }
       </div>
     </div>
